@@ -7,7 +7,7 @@ import java.io.InputStreamReader;
 public class Main {
     public static void main(String[] args) {
         ClassLoader classLoader = Main.class.getClassLoader();
-        try (InputStream inputStream = classLoader.getResourceAsStream("META-INF/annotated-classes.txt")) {
+        try (InputStream inputStream = classLoader.getResourceAsStream("META-INF/flamingock-graalvm-configuration.txt")) {
             if (inputStream != null) {
                 try (BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream))) {
                     String line;

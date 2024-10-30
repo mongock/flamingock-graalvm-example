@@ -1,5 +1,6 @@
 plugins {
     id("java")
+    id("io.flamingock.graalvmPlugin") version "1.0.2-SNAPSHOT"
 }
 
 group = "io.flamingock"
@@ -22,8 +23,8 @@ dependencies {
     implementation("org.slf4j", "slf4j-api", "2.0.6")
     implementation("org.slf4j:slf4j-simple:2.0.6")
 
-    implementation("io.flamingock:graalvm-core:1.0.1")
-    annotationProcessor("io.flamingock:graalvm-core:1.0.1")
+    implementation("io.flamingock:graalvm-core:1.0.2-SNAPSHOT")
+    annotationProcessor("io.flamingock:graalvm-core:1.0.2-SNAPSHOT")
 
     testImplementation(platform("org.junit:junit-bom:5.9.1"))
     testImplementation("org.junit.jupiter:junit-jupiter")
@@ -39,15 +40,7 @@ java {
     }
 }
 
-val copyAnnotatedClasses by tasks.registering(Copy::class) {
-    dependsOn("compileJava")
-    from("build/generated/sources/annotationProcessor/java/main/META-INF/annotated-classes.txt")
-    into("src/main/resources/META-INF/")
-}
 
-tasks.named("processResources") {
-    dependsOn(copyAnnotatedClasses)
-}
 
 tasks.withType<Jar> {
     manifest {
