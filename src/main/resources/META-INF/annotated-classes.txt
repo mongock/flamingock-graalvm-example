@@ -1,0 +1,2 @@
+io.flamingock.changes.ACreateCollection
+io.flamingock.changes.BInsertDocument

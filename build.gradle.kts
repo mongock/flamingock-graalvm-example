@@ -39,6 +39,16 @@ java {
     }
 }
 
+val copyAnnotatedClasses by tasks.registering(Copy::class) {
+    dependsOn("compileJava")
+    from("build/generated/sources/annotationProcessor/java/main/META-INF/annotated-classes.txt")
+    into("src/main/resources/META-INF/")
+}
+
+tasks.named("processResources") {
+    dependsOn(copyAnnotatedClasses)
+}
+
 tasks.withType<Jar> {
     manifest {
         attributes["Main-Class"] = "io.flamingock.Main"
