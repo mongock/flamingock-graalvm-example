@@ -22,8 +22,8 @@ dependencies {
     implementation("org.slf4j", "slf4j-api", "2.0.6")
     implementation("org.slf4j:slf4j-simple:2.0.6")
 
-    implementation("io.flamingock:flamingock-graalvm:1.0.1")
-    annotationProcessor("io.flamingock:flamingock-graalvm:1.0.1")
+    implementation("io.flamingock:graalvm-core:1.0.1")
+    annotationProcessor("io.flamingock:graalvm-core:1.0.1")
 
     testImplementation(platform("org.junit:junit-bom:5.9.1"))
     testImplementation("org.junit.jupiter:junit-jupiter")

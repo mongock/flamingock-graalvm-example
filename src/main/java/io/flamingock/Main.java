@@ -4,8 +4,6 @@ import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
-// Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
-// then press Enter. You can now see whitespace characters in your code.
 public class Main {
     public static void main(String[] args) {
         ClassLoader classLoader = Main.class.getClassLoader();
@@ -18,10 +16,11 @@ public class Main {
                     }
                 }
             } else {
-                System.err.println("annotated-classes.txt not found in META-INF");
+                throw new RuntimeException("annotated-classes.txt not found in META-INF");
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
+
         }
     }
 }

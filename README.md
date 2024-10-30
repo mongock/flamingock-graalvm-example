@@ -32,13 +32,11 @@ This workaround tries to satisfies this need in the best manner possible.
 ```shell
 native-image --no-fallback \
 --features=io.flamingock.graalvm.RegistrationFeature \
+-H:ResourceConfigurationFiles=resource-config.json \
 --initialize-at-build-time=org.slf4j.simple.SimpleLogger,org.slf4j.LoggerFactory,org.slf4j.impl.StaticLoggerBinder \
 -jar  build/libs/graalvm-example-2-1.0-SNAPSHOT.jar
 ```
 
-native-image --no-fallback \
---initialize-at-build-time=org.slf4j.simple.SimpleLogger,org.slf4j.LoggerFactory,org.slf4j.impl.StaticLoggerBinder \
--jar  build/libs/graalvm-example-2-1.0-SNAPSHOT.jar
 
 - run executable with
 ```shell
