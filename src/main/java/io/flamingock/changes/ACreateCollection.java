@@ -1,8 +1,8 @@
 package io.flamingock.changes;
 
 import com.mongodb.client.MongoDatabase;
-import io.flamingock.graalvm.FlamingockGraalVM;
-import io.mongock.api.annotations.ChangeUnit;
+import io.flamingock.core.api.annotations.ChangeUnit;
+import io.flamingock.core.api.annotations.FlamingockGraalVM;
 import io.mongock.api.annotations.Execution;
 import io.mongock.api.annotations.RollbackExecution;
 

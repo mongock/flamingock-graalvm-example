@@ -13,8 +13,8 @@ repositories {
 
 val mongodbVersion = "4.3.3"
 dependencies {
-    implementation("io.mongock:mongock-standalone:5.3.5")
-    implementation("io.mongock:mongodb-sync-v4-driver:5.3.5")
+    implementation("io.flamingock:flamingock-core:1.0.0-SNAPSHOT")
+    implementation("io.flamingock:mongodb-sync-v4-driver:1.0.0-SNAPSHOT")
 
     implementation("org.mongodb:mongodb-driver-sync:$mongodbVersion")
     implementation("org.mongodb:mongodb-driver-core:$mongodbVersion")

@@ -4,10 +4,9 @@ import com.mongodb.ConnectionString;
 import com.mongodb.MongoClientSettings;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
-import io.mongock.driver.mongodb.sync.v4.driver.MongoSync4Driver;
-import io.mongock.runner.core.executor.MongockRunner;
-import io.mongock.runner.standalone.MongockStandalone;
-import io.mongock.runner.standalone.RunnerStandaloneBuilder;
+import io.flamingock.core.configurator.standalone.FlamingockStandalone;
+import io.flamingock.core.runner.Runner;
+import io.flamingock.oss.driver.mongodb.sync.v4.driver.MongoSync4Driver;
 import org.bson.codecs.configuration.CodecRegistries;
 import org.bson.codecs.configuration.CodecRegistry;
 import org.bson.codecs.pojo.PojoCodecProvider;
@@ -25,15 +24,13 @@ public class App {
     public final static String MONGODB_MAIN_DB_NAME = "test";
 
 
-    private static MongockRunner getRunner() {
-        RunnerStandaloneBuilder runnerStandaloneBuilder = MongockStandalone.builder()
-                .setDriver(MongoSync4Driver.withDefaultLock(getMainMongoClient(), MONGODB_MAIN_DB_NAME))
+    private static Runner getRunner() {
+        return FlamingockStandalone.local()
+                .setDriver(new MongoSync4Driver(getMainMongoClient(), MONGODB_MAIN_DB_NAME))
                 .setTrackIgnored(true)
                 .setTransactionEnabled(true)
-                .setLockGuardEnabled(false);
-        return runnerStandaloneBuilder.buildRunner();
+                .build();
     }
-
 
     private static MongoClient getMainMongoClient() {
         return buildMongoClientWithCodecs(MONGODB_CONNECTION_STRING);
