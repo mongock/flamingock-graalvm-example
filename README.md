@@ -31,7 +31,7 @@ pluginManagement {
   "resources": {
     "includes": [
       {
-        "pattern": "META-INF/flamingock-graalvm-configuration.txt"
+        "pattern": "META-INF/flamingock-configuration.txt"
       }
     ]
   }
