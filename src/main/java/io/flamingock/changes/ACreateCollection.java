@@ -2,9 +2,9 @@ package io.flamingock.changes;
 
 import com.mongodb.client.MongoDatabase;
 import io.flamingock.core.api.annotations.ChangeUnit;
+import io.flamingock.core.api.annotations.Execution;
 import io.flamingock.core.api.annotations.FlamingockGraalVM;
-import io.mongock.api.annotations.Execution;
-import io.mongock.api.annotations.RollbackExecution;
+import io.flamingock.core.api.annotations.RollbackExecution;
 
 @FlamingockGraalVM
 @ChangeUnit(id = "create-collection", order = "1", transactional = false)
