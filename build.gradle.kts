@@ -13,9 +13,11 @@ repositories {
 }
 
 val mongodbVersion = "4.3.3"
+val jacksonVersion = "2.15.2"
 dependencies {
     implementation("io.flamingock:flamingock-core:1.0.0-SNAPSHOT")
     implementation("io.flamingock:mongodb-sync-v4-driver:1.0.0-SNAPSHOT")
+    implementation("io.flamingock:utils:1.0.0-SNAPSHOT")
 
     implementation("org.mongodb:mongodb-driver-sync:$mongodbVersion")
     implementation("org.mongodb:mongodb-driver-core:$mongodbVersion")
@@ -24,7 +26,7 @@ dependencies {
     implementation("org.slf4j", "slf4j-api", "2.0.6")
     implementation("org.slf4j:slf4j-simple:2.0.6")
 
-    implementation("com.google.code.gson:gson:2.11.0")
+    implementation("com.fasterxml.jackson.core:jackson-databind:$jacksonVersion")
 
     implementation("io.flamingock:graalvm-core:1.0.2-SNAPSHOT")
     annotationProcessor("io.flamingock:graalvm-core:1.0.2-SNAPSHOT")
@@ -44,40 +46,21 @@ java {
 }
 
 graalvmNative {
-//    metadataRepository {
-//        enabled.set(true)
-//        uri(file("/Users/dieppa/workspace/wiremock/graalvm-example-2/src/main/resources/META-INF/reachability/"))
-//    }
-
-//    -H:ResourceConfigurationFiles=resource-config.json \
     binaries {
 
         named("main") {
             buildArgs.addAll(
                 "--features=io.flamingock.graalvm.RegistrationFeature",
+                "-H:ResourceConfigurationFiles=resource-config.json",
                 "--initialize-at-build-time=org.slf4j.simple.SimpleLogger,org.slf4j.LoggerFactory,org.slf4j.impl.StaticLoggerBinder",
+                "--initialize-at-run-time=com.google.gson.internal.bind.ReflectiveTypeAdapterFactory,com.google.gson.internal.bind.ReflectiveTypeAdapterFactory\$FieldsData",
                 "--no-fallback"
             )
         }
+
     }
 }
 
-//graalvmNative {
-//    binaries {
-//        named("main") {
-//            javaLauncher.set(javaToolchains.launcherFor {
-//                languageVersion.set(JavaLanguageVersion.of(20))
-//                vendor.set(JvmVendorSpec.matching("Oracle Corporation"))
-//            })
-//        }
-//
-//        all {
-//            options.add("--initialize-at-build-time=com.fasterxml.jackson.databind")
-//            options.add("--initialize-at-run-time=org.w3c.dom,javax.xml")
-//            option("--no-fallback")
-//        }
-//    }
-//}
 
 tasks.withType<Jar> {
     manifest {
