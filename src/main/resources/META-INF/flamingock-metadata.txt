@@ -1,0 +1,1 @@
+{"suppressedProxies":true,"classes":["io.flamingock.changes.ACreateCollection","io.flamingock.changes.CInsertAnotherDocument","io.flamingock.changes.BInsertDocument"]}

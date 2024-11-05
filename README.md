@@ -31,7 +31,7 @@ pluginManagement {
   "resources": {
     "includes": [
       {
-        "pattern": "META-INF/flamingock-configuration.txt"
+        "pattern": "META-INF/flamingock-metadata.txt"
       }
     ]
   }
@@ -47,9 +47,14 @@ pluginManagement {
 
 7. Create native image
 ```shell
-native-image --no-fallback \
+ native-image --no-fallback \
 --features=io.flamingock.graalvm.RegistrationFeature \
 -H:ResourceConfigurationFiles=resource-config.json \
 --initialize-at-build-time=org.slf4j.simple.SimpleLogger,org.slf4j.LoggerFactory,org.slf4j.impl.StaticLoggerBinder \
--jar  build/libs/graalvm-example-2-1.0-SNAPSHOT.jar
+--initialize-at-run-time=com.google.gson.internal.bind.ReflectiveTypeAdapterFactory,com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$FieldsData \
+--trace-class-initialization=com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$FieldsData \
+-H:+ReportExceptionStackTraces \
+-jar build/libs/graalvm-example-2-1.0-SNAPSHOT.jar
+
 ```
+
