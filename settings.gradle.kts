@@ -1,4 +1,4 @@
-rootProject.name = "graalvm-example"
+rootProject.name = "flamingock-graalvm-example"
 
 pluginManagement {
     repositories {

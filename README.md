@@ -50,11 +50,11 @@ native-image --no-fallback \
 --features=io.flamingock.graalvm.RegistrationFeature \
 -H:ResourceConfigurationFiles=resource-config.json \
 --initialize-at-build-time=org.slf4j.simple.SimpleLogger,org.slf4j.LoggerFactory,org.slf4j.impl.StaticLoggerBinder, \
--jar build/libs/graalvm-example-1.0-SNAPSHOT.jar
+-jar build/libs/flamingock-graalvm-example-1.0-SNAPSHOT.jar
 ```
 
 8. Run native image
 ```shell
-./graalvm-example-1.0-SNAPSHOT
+./flamingock-graalvm-example-1.0-SNAPSHOT
 ```
 
