@@ -45,3 +45,5 @@ bin/
 graalvm-example-1.0-SNAPSHOT
 
 META-INF/
+
+reports/
