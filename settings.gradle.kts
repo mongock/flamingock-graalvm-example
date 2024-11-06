@@ -1,10 +1,9 @@
-rootProject.name = "graalvm-example-2"
+rootProject.name = "graalvm-example"
 
 pluginManagement {
     repositories {
         mavenLocal()
         gradlePluginPortal()
         mavenCentral()
-        gradlePluginPortal()
     }
 }

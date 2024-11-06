@@ -3,15 +3,16 @@
 1. Add flamingock plugin to build script
 ```kotlin
 plugins {
-    id("java")
-    id("io.flamingock.graalvmPlugin") version "1.0.2-SNAPSHOT"
+    //...
+    id("io.flamingock.MetadataBundler") version "1.0.0-SNAPSHOT"
 }
 ```
 
 2. Add graalVM dependency and annotation processor
 ```kotlin
-    implementation("io.flamingock:graalvm-core:1.0.2-SNAPSHOT")
-    annotationProcessor("io.flamingock:graalvm-core:1.0.2-SNAPSHOT")
+implementation("io.flamingock:flamingock-core:1.0.0-SNAPSHOT")
+annotationProcessor("io.flamingock:metadata-generator:1.0.0-SNAPSHOT")
+implementation("io.flamingock:graalvm-core:1.0.3-SNAPSHOT")
 ```
 
 3. Add plugin manager to `settings.gradle.kts`
@@ -31,14 +32,12 @@ pluginManagement {
   "resources": {
     "includes": [
       {
-        "pattern": "META-INF/flamingock-metadata.txt"
+        "pattern": "META-INF/flamingock-metadata.json"
       }
     ]
   }
 }
 ```
-
-5. `.setLockGuardEnabled(false)` in the builder.
 
 6. Build application
 ```shell
@@ -47,11 +46,15 @@ pluginManagement {
 
 7. Create native image
 ```shell
-native-image --no-fallback \
+native-image --no-fallback \                                                  
 --features=io.flamingock.graalvm.RegistrationFeature \
 -H:ResourceConfigurationFiles=resource-config.json \
 --initialize-at-build-time=org.slf4j.simple.SimpleLogger,org.slf4j.LoggerFactory,org.slf4j.impl.StaticLoggerBinder, \
--jar build/libs/graalvm-example-2-1.0-SNAPSHOT.jar
+-jar build/libs/graalvm-example-1.0-SNAPSHOT.jar
+```
 
+8. Run native image
+```shell
+./graalvm-example-1.0-SNAPSHOT
 ```
 

@@ -3,14 +3,14 @@ package io.flamingock.changes;
 import com.mongodb.client.ClientSession;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
+import io.flamingock.core.api.annotations.BuildTimeProcessable;
 import io.flamingock.core.api.annotations.ChangeUnit;
 import io.flamingock.core.api.annotations.Execution;
-import io.flamingock.core.api.annotations.FlamingockGraalVM;
 import io.flamingock.core.api.annotations.RollbackExecution;
 import org.bson.Document;
 
 
-@FlamingockGraalVM
+@BuildTimeProcessable
 @ChangeUnit(id = "insert-document", order = "2")
 public class BInsertDocument {
     @Execution
