@@ -8,7 +8,7 @@ import io.flamingock.core.api.annotations.RollbackExecution;
 
 @BuildTimeProcessable
 @ChangeUnit(id = "create-collection", order = "1", transactional = false)
-public class ACreateCollection {
+public class _1_createCollection_changeUnit {
 
     @Execution
     public void execution(MongoDatabase mongoDatabase) {

@@ -1,6 +1,6 @@
 plugins {
     id("java")
-    id("io.flamingock.MetadataBundler") version "1.0.0-SNAPSHOT"
+    id("io.flamingock.MetadataBundler") version "0.0.24-beta"
     id("org.graalvm.buildtools.native") version "0.10.3"
 }
 
@@ -14,11 +14,12 @@ repositories {
 
 val mongodbVersion = "4.3.3"
 val jacksonVersion = "2.15.2"
+val flamingockVersion = "0.0.24-beta"
 dependencies {
-    implementation("io.flamingock:mongodb-sync-v4-driver:1.0.0-SNAPSHOT")
-    implementation("io.flamingock:flamingock-core:1.0.0-SNAPSHOT")
-    annotationProcessor("io.flamingock:metadata-generator:1.0.0-SNAPSHOT")
-    implementation("io.flamingock:graalvm-core:1.0.3-SNAPSHOT")
+    implementation("io.flamingock:mongodb-sync-v4-driver:$flamingockVersion")
+    implementation("io.flamingock:flamingock-core:$flamingockVersion")
+    annotationProcessor("io.flamingock:flamingock-metadata-generator:$flamingockVersion")
+    implementation("io.flamingock:graalvm-core:$flamingockVersion")
 
 
     implementation("org.mongodb:mongodb-driver-sync:$mongodbVersion")

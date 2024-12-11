@@ -10,8 +10,8 @@ import io.flamingock.core.api.annotations.RollbackExecution;
 import org.bson.Document;
 
 @BuildTimeProcessable
-@ChangeUnit(id = "insert-another-document", order = "4")
-public class CInsertAnotherDocument {
+@ChangeUnit(id = "insert-another-document", order = "3")
+public class _3_insertAnotherDocument_changeUnit {
 
     @Execution
     public void execution(MongoDatabase mongoDatabase, ClientSession clientSession) {
