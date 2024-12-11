@@ -46,11 +46,7 @@ pluginManagement {
 
 7. Create native image
 ```shell
-native-image --no-fallback \                                                  
---features=io.flamingock.graalvm.RegistrationFeature \
--H:ResourceConfigurationFiles=resource-config.json \
---initialize-at-build-time=org.slf4j.simple.SimpleLogger,org.slf4j.LoggerFactory,org.slf4j.impl.StaticLoggerBinder, \
--jar build/libs/flamingock-graalvm-example-1.0-SNAPSHOT.jar
+native-image --no-fallback --features=io.flamingock.graalvm.RegistrationFeature -H:ResourceConfigurationFiles=resource-config.json -H:+ReportExceptionStackTraces --initialize-at-build-time=org.slf4j.simple.SimpleLogger,org.slf4j.LoggerFactory,org.slf4j.impl.StaticLoggerBinder -jar build/libs/flamingock-graalvm-example-1.0-SNAPSHOT.jar
 ```
 
 8. Run native image

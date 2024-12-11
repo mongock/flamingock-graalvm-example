@@ -12,7 +12,7 @@ import org.bson.Document;
 
 @BuildTimeProcessable
 @ChangeUnit(id = "insert-document", order = "2")
-public class BInsertDocument {
+public class _2_insertDocument_changeUnit {
     @Execution
     public void execution(MongoDatabase mongoDatabase, ClientSession clientSession) {
         MongoCollection<Document> collection = mongoDatabase.getCollection("clientCollection");
