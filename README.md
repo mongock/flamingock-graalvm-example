@@ -1,52 +1,19 @@
-# Steeps for GraalVM support
+# Flamingock with GraalVM Example
 
-1. Add graalVM dependency and annotation processor
-```kotlin
-implementation("io.flamingock:flamingock-core:1.0.0-SNAPSHOT")
-annotationProcessor("io.flamingock:metadata-generator:1.0.0-SNAPSHOT")
-implementation("io.flamingock:graalvm-core:1.0.3-SNAPSHOT")
-```
+This project demonstrates how to integrate [Flamingock](https://github.com/mongock/flamingock-project) and 
+GraalVM native image. It includes examples for both Maven and Gradle.
 
-3. Add plugin manager to `settings.gradle.kts`
-```kotlin
-pluginManagement {
-    repositories {
-        mavenLocal()
-        gradlePluginPortal()
-        mavenCentral()
-    }
-}
-```
+## Prerequisites
 
-4. Add the flamingock configuration file to `resource-config.json`
-```json
-{
-  "resources": {
-    "includes": [
-      {
-        "pattern": "META-INF/flamingock-metadata.json"
-      }
-    ]
-  }
-}
-```
+Before you start, ensure you have the following installed:
 
-6. Build application
-```shell
-./gradlew clean build
-```
+- **GraalVM**: [Download GraalVM](https://www.graalvm.org/downloads/) and set it as your Java version.
+- **Native Image Tool**: Install the GraalVM `native-image` tool.
+- **Maven and Gradle**: Both are supported, and you can choose your preferred build tool.
+- **Docker**: If you plan to use a Docker-based native image build.
 
-7. Create native image
-- Generated with gradle
-```shell
-native-image --no-fallback --features=io.flamingock.graalvm.RegistrationFeature -H:ResourceConfigurationFiles=resource-config.json -H:+ReportExceptionStackTraces --initialize-at-build-time=org.slf4j.simple.SimpleLogger,org.slf4j.LoggerFactory,org.slf4j.impl.StaticLoggerBinder -jar build/libs/flamingock-graalvm-example-0.0.1-SNAPSHOT.jar
-```
-- Generated with maven
-```shell
-native-image --no-fallback --features=io.flamingock.graalvm.RegistrationFeature -H:ResourceConfigurationFiles=resource-config.json -H:+ReportExceptionStackTraces --initialize-at-build-time=org.slf4j.simple.SimpleLogger,org.slf4j.LoggerFactory,org.slf4j.impl.StaticLoggerBinder -jar target/flamingock-graalvm-example-0.0.1-SNAPSHOT.jar
-```
-8. Run native image
-```shell
-./flamingock-graalvm-example-1.0-SNAPSHOT
-```
+## Setup
+Refer to the setup instructions for your chosen build tool:
 
+- [Maven Setup](SETUP_MAVEN.md)
+- [Gradle Setup](SETUP_GRADLE.md)
